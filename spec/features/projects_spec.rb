@@ -20,4 +20,17 @@ feature 'User can manage a list of projects' do
     expect(page).to have_content('Make t-shirt quilt')
   end
 
+  scenario 'User can update projects' do
+    visit '/projects'
+    click_on 'Add project'
+    fill_in 'Project name', :with => 'Make t-shirt quilt'
+    click_on 'Add project'
+    click_on 'Make t-shirt quilt'
+    click_on 'Edit'
+    fill_in 'Project name', :with => 'Make T-Shirt quilt'
+    click_on 'Update'
+    expect(page).to_not have_content('Make t-shirt quilt')
+    expect(page).to have_content('Make T-Shirt quilt')
+  end
+
 end

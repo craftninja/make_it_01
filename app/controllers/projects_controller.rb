@@ -18,6 +18,16 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update_attributes(allowed_parameters)
+    redirect_to projects_path
+  end
+
   private
 
   def allowed_parameters
