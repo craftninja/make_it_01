@@ -33,4 +33,14 @@ feature 'User can manage a list of projects' do
     expect(page).to have_content('Make T-Shirt quilt')
   end
 
+  scenario 'User can delete projects' do
+    visit '/projects'
+    click_on 'Add project'
+    fill_in 'Project name', :with => 'Make t-shirt quilt'
+    click_on 'Add project'
+    click_on 'Make t-shirt quilt'
+    click_on 'Delete'
+    expect(page).to_not have_content('Make t-shirt quilt')
+  end
+
 end
